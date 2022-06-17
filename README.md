@@ -15,3 +15,5 @@ This example is a blend of ideas, tutorials, and code samples shared by these fi
      [Bartosz Ciechanowski](https://ciechanow.ski) 
   |  [Martijn Steinrucken](https://www.youtube.com/TheArtOfCodeIsCool)
   |  [Warren Moore](https://metalbyexample.com)
+
+Photo by [Thomas Lardeau](https://unsplash.com/@thomaslrdeau)
