@@ -37,10 +37,8 @@ class AtmosphericTexture: NSObject {
             return assertionFailure("Metal Device is missing 🫢.")
         }
 
-        // Don't use the device scale because we're going to blur the texture anyway.
-        let scale = 1.0
-        let width = Int(frame.size.width * scale)
-        let height = Int(frame.size.height * scale)
+        let width = Int(frame.size.width)
+        let height = Int(frame.size.height)
 
         let pixelRowAlignment = device.minimumTextureBufferAlignment(for: .bgra8Unorm)
         let bytesPerRow = width * pixelRowAlignment
@@ -68,7 +66,6 @@ class AtmosphericTexture: NSObject {
         let snapshotFrame = CGRect(origin: CGPoint(x: -frame.origin.x,
                                                    y: view.layer.bounds.height - frame.maxY),
                                    size: view.layer.bounds.size)
-        context.scaleBy(x: scale, y: scale)
         UIGraphicsPushContext(context)
         let flip = CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: view.layer.bounds.size.height)
         context.concatenate(flip)
@@ -115,7 +112,6 @@ class AtmosphericTexture: NSObject {
                                  height: height,
                                  mipmapped: true)
         descriptor.usage = .shaderRead
-        //        descriptor.usage = .shaderRead.union(.shaderWrite)
         descriptor.storageMode = .shared
         return device.makeTexture(descriptor: descriptor)
     }
