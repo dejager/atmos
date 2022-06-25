@@ -69,7 +69,7 @@ class AtmosphereView: UIView {
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 self.atmosView.renderer.atmosTexture?.render(view: self.contentView,
                                                              frame: self.targetFrame)
-                self.atmosView.setNeedsDisplay()
+                self.atmosView.setNeedsDisplay(self.targetFrame)
                 self.hasAPoopInTheShoot = false
             }
             hasAPoopInTheShoot = true
